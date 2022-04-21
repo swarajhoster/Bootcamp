@@ -42,7 +42,6 @@ exports.getBootcamps = asyncHandler(async (req, res, next) => {
         query = query.sort("-createdAt")
     }
 
-    console.log(' fksd fksd  fsd fkd sfksdkf sdkf sd')
 
 
     // Pagination
