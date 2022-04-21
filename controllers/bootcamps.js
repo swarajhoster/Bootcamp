@@ -44,6 +44,7 @@ exports.getBootcamps = asyncHandler(async (req, res, next) => {
 
 
 
+
     // Pagination
     const page = parseInt(req.query.page,10) || 1
     const limit = parseInt(req.query.limit,10) || 100
