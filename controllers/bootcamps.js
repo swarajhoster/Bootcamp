@@ -41,6 +41,7 @@ exports.getBootcamps = asyncHandler(async (req, res, next) => {
     }else {
         query = query.sort("-createdAt")
     }
+    console.log('sample comit')
 
     // Pagination
     const page = parseInt(req.query.page,10) || 1
