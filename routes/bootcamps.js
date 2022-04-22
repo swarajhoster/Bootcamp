@@ -10,6 +10,12 @@ const {
     getBootcampsInRadius
 } = require("../controllers/bootcamps")
 
+// Include other resources routers
+const courseRouter = require("./courses")
+
+// Re-route into other resources routers
+router.use('/:bootcampId/courses', courseRouter)
+
 // Get Bootcamp based on there location
 router.get("/radius/:zipcode/:distance", getBootcampsInRadius)
 

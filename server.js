@@ -19,9 +19,11 @@ app.use(express.json())
 
 // Route Files
 const bootcamps = require("./routes/bootcamps.js")
+const courses = require("./routes/courses.js");
 
 // Mount routers
 app.use("/api/v1/bootcamps", bootcamps)
+app.use("/api/v1/courses", courses)
 
 // Custom Errorhandler
 app.use(errorHandler)
