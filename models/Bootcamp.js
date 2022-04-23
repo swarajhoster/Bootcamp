@@ -127,18 +127,25 @@ BootcampSchema.pre('save', async function (next) {
         country: loc[0].country,
     }
 
-
     // Do not save address in DB (optional)
     this.address = undefined;
+    next()
+})
 
+// Cascade delete courses when a bootcamp is deleted
+BootcampSchema.pre("remove", async function (next) {
+    console.log('Courses have been removed from bootcamp ', this._id)
+    await this.model("Course").deleteMany({bootcamp: this._id});
     next()
 })
 
 // Reverse populate with virtuals
-BootcampSchema.virtuals('courses', {
-    ref:"Courses",
-    localField:"_id",
-
+BootcampSchema.virtual('courses', {
+    ref: "Course",
+    localField: "_id",
+    foreignField: "bootcamp",
+    justOne: false
 })
+
 
 module.exports = mongoose.model('Bootcamp', BootcampSchema);
